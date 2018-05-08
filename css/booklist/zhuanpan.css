@@ -1,0 +1,343 @@
+/* 大转盘 */
+.zp-part1{
+  width: 7.5rem;
+  height: 9.18rem;
+  background: url(../../images/zhuanpan/zhuanpan1.jpg) no-repeat;
+  background-size:100%; 
+}
+.zp-part2{
+  /*background: #fce23a;*/
+ background: -moz-linear-gradient(top,#fce131,#fece14);
+  padding-top: .36rem;
+  padding-bottom: .5rem;
+}
+.zp-block{
+  width: 7.12rem;
+  margin: 0 auto;
+}
+.zp-block .hd{
+  width: 100%;
+  height: .56rem;
+}
+.zp-block .hd.type1{
+  background: url(../../images/zhuanpan/zhuanpan2.png) no-repeat;
+  background-size: 100%;
+}
+.zp-block .hd.type2{
+  background: url(../../images/zhuanpan/zhuanpan5.png) no-repeat;
+  background-size: 100%;
+}
+.zp-block .bd{
+  width: 100%;
+  background: url(../../images/zhuanpan/zhuanpan3.jpg) repeat-y;
+  background-size: 100%;
+  padding-top: .3rem
+}
+.zp-block .ft{
+  width: 100%;
+  height: .25rem;
+  background: url(../../images/zhuanpan/zhuanpan4.png) no-repeat;
+  background-size: 100%;
+}
+.zhuanpan-txt{
+  line-height: .4rem;
+  
+}
+.zhuanpan-txt th{
+  font-weight: normal;
+  white-space: nowrap;
+  vertical-align: top;
+  color: #e7332b;
+}
+.zhuanpan-txt td{
+  height: .6rem;
+  vertical-align: top;
+}
+.zp-part3{
+  /*background: #e6552a;*/
+ background: -moz-linear-gradient(top,#e75a32,#ce0201);
+}
+.zp-part3 .hd{
+  height: 1.75rem;
+  /*background: url(../../images/zhuanpan/zhuanpan6.jpg) no-repeat;
+  background-size: 100%;*/
+}
+.zp-part3 .hd .block1{
+	height: .26rem;
+	background: url(../../images/zhuanpan/block1.jpg) no-repeat;
+  background-size: 100%;
+}
+.zp-part3 .hd .block2{
+	height: 1.5rem;
+	background: url(../../images/zhuanpan/block2.png) no-repeat;
+  background-size: 100%;
+}
+.zp-part3 .bd{
+  width: 6.5rem;
+  margin: 0 auto;
+  background: #f76a45;
+  padding: 0 .25rem .3rem .25rem;
+  box-sizing: border-box;
+}
+.zp-part3 .ft{
+  height: 1.1rem;
+  background: url(../../images/zhuanpan/zhuanpan7.png) no-repeat;
+  background-size: 100%;
+}
+.zp-part3 h3{
+  font-size: .3rem;
+  font-weight: bold;
+  color: #faeec8;
+  text-shadow: 0.1rem 0.05rem 0.2rem rgba(255,220,0,0.41);
+  text-align: center;
+  margin-bottom: .15rem;
+}
+.jiang-tb{
+  width: 100%;
+  padding-left: .25rem;
+  padding-right: .25rem;
+  border-collapse: collapse;
+  margin-bottom: .3rem;
+}
+.jiang-tb td{
+  width: 50%;
+  height: .7rem;
+  border:0;  
+  
+}
+.jiang-tb tr td:nth-child(1){
+  padding-left: .3rem;
+  color: #fce23f;
+}
+.jiang-tb tr td:nth-child(2){
+  color: #fff;
+}
+.jiang-tb tr:nth-child(odd) td{
+  background: #e52920;
+}
+.jiang-tb tr:nth-child(even) td{
+  background: #ff7e5c;
+}
+.gb-wheel-content {
+  position: relative;
+  left: 50%;
+  top: 0.252rem;
+  margin-left: -2.215rem;
+  width: 4.43rem;
+  height: 4.41rem;
+  box-sizing: border-box;
+  border-radius: inherit;
+  background-clip: padding-box;
+  border-radius: 50%;
+  background: url(../../images/zhuanpan/zp.png) left no-repeat;
+      background-size: auto auto;
+  background-size: 100%;
+  position: relative;
+  
+}
+.gb-wheel-container{
+  border: 0;
+  box-shadow: none;
+}
+.gb-wheel-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -0.78rem;
+  margin-top: -0.95rem;
+  width: 1.56rem;
+  height: 1.9rem;
+  background: url(../../images/zhuanpan/btn.png) left no-repeat;
+      background-size: auto auto;
+  background-size: 100%;
+}
+.gb-wheel-container{
+	position: relative;
+	top: 4.08rem;
+	width: 5.01rem;
+  height: 5.04rem;
+  margin-top: 0;
+}
+.gb-wheel-icontent{
+	top: 2.4rem;
+}
+.gb-wheel-itext{
+	margin-top: .07rem;
+}
+.gb-wheel-run {
+    -webkit-transition: none;
+    transition:none;
+}
+
+
+
+
+/* …… 转盘pc抽奖 by hison 20171122 {{{ …… */
+body{margin:0;padding:0; overflow-x:hidden;}
+.c--e7332b{color:#e7332b;}
+.wrap__lottery-body{font-size:.02rem; background:url(../../images/zhuanpan/pc/big-bg.jpg) no-repeat; background-size:100% 100%; height:calc(100vh);width:100%; position:relative;}
+.bottom-bg{background:url(../../images/zhuanpan/pc/big-bg-bt.png) no-repeat; background-size:100% 100%; height:.4rem; width:100%; position:absolute;bottom:0; z-index:11;}
+.wrap__hd-bg{background:url(../../images/zhuanpan/pc/hd-bg.png) repeat-x; background-size: auto .04rem; height:.04rem; position:relative; z-index:11;}
+.wrap__logo{background:url(../../images/zhuanpan/pc/logo.png) no-repeat; background-size: .203rem auto; margin:.01rem 0 0 .02rem; height:.085rem; width:.205rem; position:relative; z-index:11;}
+.wrap__10years{background:url(../../images/zhuanpan/pc/10years.png) no-repeat; background-size: .249rem auto; overflow:hidden; height:.074rem; width:.25rem; position:absolute; right:.03rem;top:.05rem; z-index:11;}
+.wrap__10years i{height:100%;width:.15rem; position:absolute;left:0;top:0; border-radius:50%;}
+.wrap__rotateBg{overflow:hidden; height:.55rem;width:100%; position:absolute;top:0;right:0; z-index:1;}
+.wrap__rotateBg i{background:url(../../images/zhuanpan/pc/roll-bg.png) no-repeat center; background-size:2.148rem 2.148rem; display:block; margin:-.8rem 0 0 .2rem; height:2.148rem;width:2.148rem;}
+
+.wrap__coins{background:url(../../images/zhuanpan/pc/coins.png) no-repeat; background-size: cover; height:.438rem; width:.827rem; position:absolute; right:.22rem;top:-.015rem; z-index:10;}
+.wrap__slogan{background:url(../../images/zhuanpan/pc/slogan-txt.png) no-repeat; background-size: .75rem auto; height:.411rem; width:.976rem; position:absolute; right:.04rem;top:.09rem; z-index:11;}
+
+/*转盘抽奖*/
+.wrap__wheel-box{
+	position:absolute; left:.09rem;bottom:.24rem; z-index:15;
+}
+.wrap__wheel-box .shadow-bg{
+	background:url(../../images/zhuanpan/pc/shadow-bg.png) no-repeat center; background-size:.32rem auto;
+	display:block; margin-top:-.03rem; height: .036rem;width: 100%;
+}
+.wrap__wheel-inner{
+	background:url(../../images/zhuanpan/pc/circle.png) no-repeat; background-size:cover;
+	height: .5rem;width: .5rem; position:relative; z-index:11;
+}
+.wrap__wheel-inner .wheel-content {
+	position: absolute; left: .031rem;top: .025rem;
+	width: .435rem;
+	height: .435rem;
+	box-sizing: border-box;
+	border-radius: inherit;
+	background-clip: padding-box;
+	border-radius: 50%;
+	background: url(../../images/zhuanpan/zp.png) left no-repeat;
+	background-size: 100%;
+  
+}
+.wrap__wheel-inner .wheel-btn {
+	position: absolute;left: 50%;top: 50%;
+	cursor:pointer; margin:-.11rem 0 0 -.08rem;padding:0; height: .19rem;width: .156rem; text-align:center;
+	background: url(../../images/zhuanpan/btn.png) left no-repeat;
+	background-size: 100%;
+}
+.wrap__wheel-inner .wheel-btn .uimg{display:block; border-radius:50%; margin:.05rem auto 0; height:.125rem;width:.125rem;}
+
+/*抽奖规则*/
+.wrap__lottery-rule{
+	background:url(../../images/zhuanpan/pc/rule-bg.png) no-repeat; background-size:100% 100%;
+	height: .16rem;width: .43rem; position:absolute; bottom:.014rem; left:.12rem; z-index:11;
+}
+.wrap__lottery-rule .inner{padding:.015rem .02rem 0 .078rem;}
+.wrap__lottery-rule .inner .row{font-size:.018rem; font-family:arial; margin-top:.01rem;}
+
+/*中奖名单*/
+.wrap__lottery-list{background:url(../../images/zhuanpan/pc/mingdan-bg.png) no-repeat left top; background-size: cover; height:.65rem; width:1.25rem; position:absolute; right:0;bottom:0; z-index:12;}
+.wrap__lottery-list .lottery-inner{font-size:.03rem; margin:.2rem 0 0 .18rem; overflow:auto; padding-right:.01rem; height:.44rem;width:.88rem;}
+/*滚动条*/
+.wrap__lottery-list .lottery-inner::-webkit-scrollbar {
+	height:6px;width:6px;background:rgba(222,222,222,0.5);transition:all 0.3s ease-in-out;border-radius:20px;
+}
+.wrap__lottery-list .lottery-inner::-webkit-scrollbar-button {display:none}
+.wrap__lottery-list .lottery-inner::-webkit-scrollbar-track {
+	background-color: #f3613f;
+}
+.wrap__lottery-list .lottery-inner::-webkit-scrollbar-track-piece {background: #f3613f;}
+.wrap__lottery-list .lottery-inner::-webkit-scrollbar-thumb {
+	width:6px;min-height:15px;background:#e8482e;transition:all 0.3s ease-in-out;border-radius:5px;
+}
+.wrap__lottery-list .lottery-inner::-webkit-scrollbar-thumb:hover {background:#f13b1d;}
+.wrap__lottery-list .lottery-inner::-webkit-scrollbar-thumb:active {background:#f13b1d;}
+.wrap__lottery-list .lottery-list .item{margin-bottom:.012rem;}
+.wrap__lottery-list .lottery-list .item:last-child{margin-bottom:.01rem;}
+.wrap__lottery-list .lottery-list .item .prizeImg{padding:.005rem .02rem; text-align:center;}
+.wrap__lottery-list .lottery-list .item .prizeImg img{vertical-align:top; width:.04rem;}
+.wrap__lottery-list .lottery-list .item .prizeImg h2{color:#faeec8; text-shadow:0 0 5px #ecd794; font-size:.018rem; margin:0;padding:0;}
+.wrap__lottery-list .lottery-list .item .memlist{background:#e52920; border-radius:.01rem; min-height:.10rem;}
+.wrap__lottery-list .lottery-list .item .memlist span{float:left; color:#fce23f; font-size:.016rem; font-family:arial; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; padding-left:.015rem; line-height:.033rem; width:18%;}
+/*底色区分*/
+.wrap__lottery-list .lottery-list .item .memlist.type01{background:#f4d85b;}
+.wrap__lottery-list .lottery-list .item .memlist.type01 span{color:#9f3c06;}
+.wrap__lottery-list .lottery-list .item .memlist.type02{background:#d3dadf;}
+.wrap__lottery-list .lottery-list .item .memlist.type02 span{color:#3e4c5c;}
+.wrap__lottery-list .lottery-list .item .memlist.type03{background:#f1ceb0;}
+.wrap__lottery-list .lottery-list .item .memlist.type03 span{color:#5f0f05;}
+
+
+/* |:: 定义flex弹性盒子 */
+.flexbox {
+	/*老版本：iOS 6-, Safari 3.1-6*/
+	display: -webkit-box; display: -moz-box; display: -webkit-flex;
+	/*新版本：Chrome*/
+	display: flex;
+	/*设置父元素内部的伸缩子元素项目换行规则：水平排列（row）不换行（nowrap）*/
+	-webkit-box-orient: horizontal;
+	/*老版本：iOS 6-, Safari 3.1-6*/
+	-webkit-flex-flow: row nowrap;
+	/*新版本：Chrome*/
+	flex-flow: row nowrap;
+}
+.flex1 {
+	/*老版本：iOS 6-, Safari 3.1-6*/
+	-webkit-box-flex: 1; -moz-box-flex: 1; -webkit-flex: 1;
+	/*新版本：Chrome*/
+	flex: 1;
+	/*此处无需设置宽度，因为flexbox会自动伸缩*/
+	width: auto!important;
+}
+.flex2 {
+	/*老版本：iOS 6-, Safari 3.1-6*/
+	-webkit-box-flex: 2; -moz-box-flex: 2; -webkit-flex: 2;
+	/*新版本：Chrome*/
+	flex: 2;
+	/*此处无需设置宽度，因为flexbox会自动伸缩*/
+	width: auto!important;
+}
+
+
+/*转盘css3动画*/
+/*闪过效果*/
+.anim-flashX{
+	background-image: -webkit-linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.3),rgba(255,255,255,0));
+	background-image: -moz-linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.3),rgba(255,255,255,0));
+	-webkit-transform: skewX(-70deg); -moz-transform: skewX(-70deg);
+	animation: flashX 3s infinite;-webkit-animation: flashX 3s infinite;-moz-animation: flashX 3s infinite;
+}
+@-webkit-keyframes flashX {
+	from {left:-100px;}
+	to {left:200%;}
+}
+@keyframes flashX {
+	from {left: -100px;}
+	to {left: 200%;}
+}
+/*旋转效果*/
+.anim-rotate{
+	animation: rotateY 30s linear infinite;-webkit-animation: rotateY 30s linear infinite;-moz-animation: rotateY 30s linear infinite;
+}
+@-webkit-keyframes rotateY {
+	from {-webkit-transform: rotate(0deg);}
+	to {-webkit-transform: rotate(360deg);}
+}
+@keyframes rotateY {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+/*上下移动*/
+.anim-translateY{
+	animation: translateY 1s linear infinite;-webkit-animation: translateY 1s linear infinite;-moz-animation: translateY 1s linear infinite;
+}
+@-webkit-keyframes translateY {
+	50% { -webkit-transform: translateY(-6px); transform: translateY(-6px); }
+}
+@keyframes translateY {
+	50% { -webkit-transform: translateY(-6px); transform: translateY(-6px); }
+}
+/*上下移动*/
+.anim-zoomIn{
+	animation: zoomIn 1s linear;-webkit-animation: zoomIn 1s linear;-moz-animation: zoomIn 1s linear;
+}
+@-webkit-keyframes zoomIn {
+	50% { -webkit-transform: scale(1.03); transform: scale(1.03); }
+}
+@keyframes zoomIn {
+	50% { -webkit-transform: scale(1.03); transform: scale(1.03); }
+}
+
+/* }}} */

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>转盘抽奖</title>
+	<meta name="format-detection" content="telephone=no">
+	<!--自动将网页中的电话号码显示为拨号的超链接-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<!--width宽度height高度，initial-scale初始的缩放比例，minimum-scale允许缩放到的最小比例，maximum-scale允许缩放到的最大比例，user-scalable是否可以手动缩放-->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!--IOS设备-->
+	<meta name="apple-touch-fullscreen" content="yes">
+	<!--IOS设备-->
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="../css/booklist/mend-weikeniu.css" />
+	
+	<link rel="stylesheet" href="../css/booklist/sale-date.css" />
+	<link rel="stylesheet" href="../css/booklist/zhuanpan.css" />
+	<script src="../Scripts/jquery-1.8.0.min.js"></script>
+	<script src="../Scripts/fontSize.js"></script>
+	<style>
+		body{
+			padding-bottom: 0;
+			overflow-x: hidden;
+		}
+		.gb-wheel-run {
+		    -webkit-transition: transform 6s ease;
+		    transition: transform 6s ease;
+		}
+	</style>
+</head>
+<body>
+	<section class="zp-part1">
+			<div class="gb-wheel-container" id="gbWheel">
+					<canvas class="gb-wheel-content gb-wheel-run" id="wheelcanvas" width="422px" height="422px">
+						<ul class="gb-wheel-line"></ul>
+						<div class="gb-wheel-list"></div>
+					</canvas>
+					<p class="gb-wheel-btn" id="gbLottery"></p>     
+			   </div>
+	</section>
+	<section class="zp-part2">
+		<section class="zp-block" style="margin-bottom:.45rem">
+			<section class="hd type1"></section>
+			<section class="bd">
+				<table class="yu-f30r yu-lrpad30r zhuanpan-txt">
+					<tr>
+						<th>活动：</th>
+						<td>微可牛抽奖活动</td>
+					</tr>
+					<tr>
+						<th>时间：</th>
+						<td>2017-11-01 13点 - 2017-11-02 13点(已结束)</td>
+					</tr>
+					<tr>
+						<th>内容：</th>
+						<td>微可牛抽奖活动</td>
+					</tr>
+				</table>
+			</section>
+			<section class="ft"></section>
+		</section>
+		<section class="zp-block">
+			<section class="hd type2"></section>
+			<section class="bd">
+				<table class="yu-f30r yu-lrpad30r zhuanpan-txt">
+					<tr>
+						<th>特等奖：</th>
+						<td>微可牛抽奖活动特等奖</td>
+					</tr>
+					<tr>
+						<th>一等奖：</th>
+						<td>微可牛抽奖活动一等奖</td>
+					</tr>
+					<tr>
+						<th>二等奖：</th>
+						<td>微可牛抽奖活动二等奖</td>
+					</tr>
+				</table>
+			</section>
+			<section class="ft"></section>
+		</section>
+	</section>
+	<section class="zp-part3">
+		<section class="hd">
+			<section class="block1"></section>
+			<section class="block2"></section>
+			
+		</section>
+		<section class="bd">
+			<section>
+				<h3>特等奖</h3>
+				<table class="jiang-tb yu-f30r">
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+				</table>
+				<h3>一等奖</h3>
+				<table class="jiang-tb yu-f30r">
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+				</table>
+			</section>
+		</section>
+		<section class="ft"></section>
+	</section>
+	<script type="text/javascript">
+		var awards;
+		(function() {
+		awards = [
+				{'index': 0, 'text': '特等奖' , 'name': 'icono-headphone'},
+				{'index': 1, 'text': '一等奖' , 'name': 'icono-iphone'},
+				{'index': 2, 'text': '二等奖' , 'name': 'icono-camera'},
+				{'index': 3, 'text': '三等奖' , 'name': 'icono-cup'},
+				{'index': 4, 'text': '参与奖', 'name': 'icono-calendar'},
+				{'index': 5, 'text': '谢谢参与', 'name': 'icono-calendar'},
+//				 {'index': 6, 'text': '无奖', 'name': 'icono-keyboard'},
+//				 {'index': 7, 'text': '逗逼奖', 'name': 'icono-keyboard'}
+			],
+			len = awards.length,
+			turnNum = 1 / len;  // 文字旋转 turn 值
+	
+		var gbWheel = $('gbWheel'),
+			lineList = gbWheel.querySelector('ul.gb-wheel-line'),
+			itemList = gbWheel.querySelector('.gb-wheel-list'),
+			lineListHtml = [],
+			itemListHtml = [];
+	
+		var transform = preTransform();
+	
+		awards.forEach(function(v, i, a) {
+			// 分隔线
+			lineListHtml.push('<li class="gb-wheel-litem" style="' + transform + ': rotate('+ (i * turnNum + turnNum / 2) +'turn)"></li>');
+	
+			// 奖项
+			itemListHtml.push('<div class="gb-wheel-item">');
+			itemListHtml.push('<div class="gb-wheel-icontent" style="' + transform + ': rotate('+ (i * turnNum) +'turn)">');
+			itemListHtml.push('<p class="gb-wheel-iicon">');
+			itemListHtml.push('<i class="'+v.name+'"></i>');
+			itemListHtml.push('</p>');
+			itemListHtml.push('<p class="gb-wheel-itext">');
+			itemListHtml.push(v.text);
+			itemListHtml.push('</p>');
+			itemListHtml.push('</div>');
+			itemListHtml.push('</div>');
+		});           
+	
+		lineList.innerHTML = lineListHtml.join('');
+		itemList.innerHTML = itemListHtml.join('');
+	
+		function $(id) {
+			return document.getElementById(id);
+		};
+	
+		// 旋转
+		var i = 0;
+		var oldpart="";
+		$('gbLottery').onclick = function() {
+//			i++;
+//			gbWheel.querySelector('.gb-wheel-content').style = transform + ': rotate('+ i * 3600 +'deg)';
+			
+			//随机
+			i++;
+			var ran=parseInt(Math.random()*10);
+			ran>len-1?ran=len-1:ran;
+			console.log(ran)
+			gbWheel.querySelector('.gb-wheel-content').style = transform + ': rotate('+ (-(i * 3600+360/len*ran)) +'deg)'; 
+			console.log(awards[ran].text)
+		}
+	
+		// transform兼容
+		function preTransform() {
+			var cssPrefix,
+			vendors = {
+			  '': '',
+			  Webkit: 'webkit',
+			  Moz: '',
+			  O: 'o',
+			  ms: 'ms'
+			},
+			testEle = document.createElement('p'),
+			cssSupport = {};
+	
+			 // 嗅探特性
+			Object.keys(vendors).some(function(vendor) {
+				if (testEle.style[vendor + (vendor ? 'T' : 't') + 'ransform'] !== undefined) {
+				  cssPrefix = vendor ? '-' + vendor.toLowerCase() + '-' : '';
+				  return true;
+				}
+			});
+	
+		  function normalizeCss(name) {
+			name = name.toLowerCase();
+			return cssPrefix ? cssPrefix + name : name;
+		  }
+	
+		  cssSupport = {
+			transform: normalizeCss('Transform'),
+		  }
+	
+		  return cssSupport.transform;
+		}
+		
+		return awards;
+	}());
+	
+	
+	
+	//canvas转盘
+	var turnplate={
+		restaraunts:[],				//大转盘奖品名称
+		colors:[],					//大转盘奖品区块对应背景颜色
+		outsideRadius:210,			//大转盘外圆的半径
+		textRadius:160,				//大转盘奖品位置距离圆心的距离
+		insideRadius:50,			//大转盘内圆的半径
+		startAngle:4.2,				//开始角度
+		
+		bRotate:false				//false:停止;ture:旋转
+};
+
+$(document).ready(function(){
+	// 动态添加大转盘的奖品与奖品区域背景颜色
+	// turnplate.restaraunts = ["50M免费流量包", "10闪币", "谢谢参与", "5闪币", "10M免费流量包", "20M免费流量包", "20闪币 ", "30M免费流量包", "100M免费流量包", "2闪币"];
+	// turnplate.restaraunts = ["2246", "5614", "3390", "4499", "1718", "6677", "4945 ", "8745", "1111", "6068"];
+	// turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF"];
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	turnplate.restaraunts=[];
+	turnplate.colors=[];
+	for(var i=0;i<awards.length;i++){
+		turnplate.restaraunts.push(awards[i].text)
+	};
+	console.log(turnplate.restaraunts)
+	for(var j=0;j<turnplate.restaraunts.length;j++){
+		if(j%2==0){
+			turnplate.colors[j]="#94d7a7";
+		}else{
+			turnplate.colors[j]="#fff7c5";
+		}	
+
+	}
+	console.log(turnplate.restaraunts)
+	console.log(turnplate.colors)
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+	var rotateTimeOut = function (){
+		$('#wheelcanvas').rotate({
+			angle:0,
+			animateTo:2160,
+			duration:8000,
+			callback:function (){
+				alert('网络超时，请检查您的网络设置！');
+			}
+		});
+
+
+	};
+});
+
+function rnd(n, m){
+	var random = Math.floor(Math.random()*(m-n+1)+n);
+	return random;
+	
+}
+
+
+//页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染
+window.onload=function(){
+	drawRouletteWheel();
+};
+
+function drawRouletteWheel() {    
+  var canvas = document.getElementById("wheelcanvas");    
+  if (canvas.getContext) {
+	  //根据奖品个数计算圆周角度
+	  var arc = Math.PI / (turnplate.restaraunts.length/2);
+	  var ctx = canvas.getContext("2d");
+	  //在给定矩形内清空一个矩形
+	  ctx.clearRect(0,0,422,422);
+	  //strokeStyle 属性设置或返回用于笔触的颜色、渐变或模式  
+	  ctx.strokeStyle = "#FFBE04";
+	  //font 属性设置或返回画布上文本内容的当前字体属性
+	  ctx.font = '32px Microsoft YaHei';      
+	  for(var i = 0; i < turnplate.restaraunts.length; i++) {       
+		  var angle = turnplate.startAngle + i * arc;
+		  ctx.fillStyle = turnplate.colors[i];
+		  ctx.beginPath();
+		  //arc(x,y,r,起始角,结束角,绘制方向) 方法创建弧/曲线（用于创建圆或部分圆）    
+		  ctx.arc(211, 211, turnplate.outsideRadius, angle, angle + arc, false);    
+		  ctx.arc(211, 211, turnplate.insideRadius, angle + arc, angle, true);
+		  ctx.stroke();  
+		  ctx.fill();
+		  //锁画布(为了保存之前的画布状态)
+		  ctx.save();   
+		  
+		  //----绘制奖品开始----
+		  ctx.fillStyle = "#E5302F";
+		  var text = turnplate.restaraunts[i];
+		  var line_height = 17;
+		  //translate方法重新映射画布上的 (0,0) 位置
+		  ctx.translate(211 + Math.cos(angle + arc / 2) * turnplate.textRadius, 211 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+		  
+		  //rotate方法旋转当前的绘图
+		  ctx.rotate(angle + arc / 2 + Math.PI / 2);
+		  
+		  /** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
+		  if(text.indexOf("M")>0){//流量包
+			  var texts = text.split("M");
+			  for(var j = 0; j<texts.length; j++){
+				  ctx.font = j == 0?'bold 20px Microsoft YaHei':'16px Microsoft YaHei';
+				  if(j == 0){
+					  ctx.fillText(texts[j]+"M", -ctx.measureText(texts[j]+"M").width / 2, j * line_height);
+				  }else{
+					  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+				  }
+			  }
+		  }else if(text.indexOf("M") == -1 && text.length>6){//奖品名称长度超过一定范围 
+			  text = text.substring(0,6)+"||"+text.substring(6);
+			  var texts = text.split("||");
+			  for(var j = 0; j<texts.length; j++){
+				  ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+			  }
+		  }else{
+			  //在画布上绘制填色的文本。文本的默认颜色是黑色
+			  //measureText()方法返回包含一个对象，该对象包含以像素计的指定字体宽度
+			  ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+		  }
+		  ctx.restore();
+		  //----绘制奖品结束----
+	  }     
+  } 
+}
+	
+	</script>
+</body>
+</html>

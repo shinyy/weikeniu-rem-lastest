@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>销售报表</title>
+	<meta name="format-detection" content="telephone=no">
+	<!--自动将网页中的电话号码显示为拨号的超链接-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<!--width宽度height高度，initial-scale初始的缩放比例，minimum-scale允许缩放到的最小比例，maximum-scale允许缩放到的最大比例，user-scalable是否可以手动缩放-->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!--IOS设备-->
+	<meta name="apple-touch-fullscreen" content="yes">
+	<!--IOS设备-->
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link type="text/css" rel="stylesheet" href="../css/booklist/sale-date.css"/>
+	<link rel="stylesheet" href="../css/booklist/new-style.css" />
+	<link rel="stylesheet" href="../css/booklist/mend-reset.css" />
+	
+	<script src="../Scripts/jquery-1.8.0.min.js"></script>
+	<script src="../Scripts/fontSize.js"></script>
+</head>
+<body>
+      <section class="all_selct-box">
+               <div class="top_lection">
+                    <ul class="flexbox">
+                         <li class="li_Tall">汇总<i></i></li>
+                         <li class="ca-flex">2017年10月1日<i></i></li>
+                         <li class="ca-flex">2017年10月1日<i></i></li>
+                    </ul>
+               </div>
+               <div class="rep_sales-table">
+                     <div class="table_top ca_f40">
+                           <ul class="flexbox">
+                                <li class="li_Tall obd">名称</li>
+                                <li class="ca-flex">销售量（月环比）</li>
+                                <li class="ca-flex">销售额（月环比）</li>
+                           </ul>
+                     </div>
+                     <div class="table_body bg--fff ca_c666">
+                           <ul class="flexbox">
+                                <li class="li_Tall">客房</li>
+                                <li class="ca-flex">21(↑81%)</li>
+                                <li class="ca-flex">6669(↓81%)</li>
+                           </ul>
+                           <ul class="flexbox">
+                                <li class="li_Tall">预售券</li>
+                                <li class="ca-flex">0(-)</li>
+                                <li class="ca-flex">0(-)</li>
+                           </ul>
+                           <ul class="flexbox">
+                                <li class="li_Tall">储值卡</li>
+                                <li class="ca-flex">0(-)</li>
+                                <li class="ca-flex">0(-)</li>
+                           </ul>
+                           <ul class="flexbox">
+                                <li class="li_Tall"></li>
+                                <li class="ca-flex">合计</li>
+                                <li class="ca-flex">6669(↓81%）</li>
+                           </ul>
+                     </div>
+               </div>
+               <div class="z_small-tips">
+                    <p>客房按下单时间统计，预售券按购买时间统计。</p>
+                    <p>客房与预售券的销售额，不会将储值卡的订单纳入统计</p>
+               </div>
+      </section>
+      <!--弹窗-->
+      <div class="dig-acntBox" id="sl_report" style="top:.94rem; display:none;">
+            <div class="checked-option car_fs24">
+                  <div class="option_case">
+                          <ul>
+                                <li class="re_checked">汇总1<b></b></li>
+                                <li>汇总2<b></b></li>
+                                <li>汇总3<b></b></li>
+                                <li>汇总4<b></b></li>
+                                <li>汇总5<b></b></li>
+                          </ul>
+                          <ul>
+                                <li class="re_checked">2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                          </ul>
+                          <ul>
+                                <li class="re_checked">2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                                <li>2017年10月1日<b></b></li>
+                          </ul>
+                    </div>
+             </div>
+      </div>
+</body>
+</html>
+<script type="text/javascript">
+$(".top_lection li").click(function(){
+	   var Index=$(this).index();
+	   $(this).siblings().removeClass("on")
+	   $(this).toggleClass("on");
+	   $("#sl_report").toggle();
+	   $(".option_case ul").hide();
+	   $(".option_case ul").eq(Index).toggle();
+	});
+</script>

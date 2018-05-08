@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8" />
+	<title>转盘抽奖</title>
+	<meta name="format-detection" content="telephone=no">
+	<!--自动将网页中的电话号码显示为拨号的超链接-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<!--width宽度height高度，initial-scale初始的缩放比例，minimum-scale允许缩放到的最小比例，maximum-scale允许缩放到的最大比例，user-scalable是否可以手动缩放-->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<!--IOS设备-->
+	<meta name="apple-touch-fullscreen" content="yes">
+	<!--IOS设备-->
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="../css/booklist/mend-weikeniu.css" />
+	
+	<link rel="stylesheet" href="../css/booklist/sale-date.css" />
+	<link rel="stylesheet" href="../css/booklist/zhuanpan.css" />
+	<script src="../Scripts/jquery-1.8.0.min.js"></script>
+	<script src="../Scripts/fontSize.js"></script>
+	<style>
+		body{
+			padding-bottom: 0;
+			overflow-x: hidden;
+		}
+	</style>
+</head>
+<body>
+	<section class="zp-part1">
+			<div class="gb-wheel-container" id="gbWheel">
+					<div class="gb-wheel-content gb-wheel-run">
+						<ul class="gb-wheel-line"></ul>
+						<div class="gb-wheel-list"></div>
+					</div>
+					<p class="gb-wheel-btn" id="gbLottery"></p>     
+			   </div>
+	</section>
+	<section class="zp-part2">
+		<section class="zp-block" style="margin-bottom:.45rem">
+			<section class="hd type1"></section>
+			<section class="bd">
+				<table class="yu-f30r yu-lrpad30r zhuanpan-txt">
+					<tr>
+						<th>活动：</th>
+						<td>微可牛抽奖活动</td>
+					</tr>
+					<tr>
+						<th>时间：</th>
+						<td>2017-11-01 13点 - 2017-11-02 13点(已结束)</td>
+					</tr>
+					<tr>
+						<th>内容：</th>
+						<td>微可牛抽奖活动</td>
+					</tr>
+				</table>
+			</section>
+			<section class="ft"></section>
+		</section>
+		<section class="zp-block">
+			<section class="hd type2"></section>
+			<section class="bd">
+				<table class="yu-f30r yu-lrpad30r zhuanpan-txt">
+					<tr>
+						<th>特等奖：</th>
+						<td>微可牛抽奖活动特等奖</td>
+					</tr>
+					<tr>
+						<th>一等奖：</th>
+						<td>微可牛抽奖活动一等奖</td>
+					</tr>
+					<tr>
+						<th>二等奖：</th>
+						<td>微可牛抽奖活动二等奖</td>
+					</tr>
+				</table>
+			</section>
+			<section class="ft"></section>
+		</section>
+	</section>
+	<section class="zp-part3">
+		<section class="hd">
+			<section class="block1"></section>
+			<section class="block2"></section>
+			
+		</section>
+		<section class="bd">
+			<section>
+				<h3>特等奖</h3>
+				<table class="jiang-tb yu-f30r">
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+				</table>
+				<h3>一等奖</h3>
+				<table class="jiang-tb yu-f30r">
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+					<tr>
+						<td>周杰伦</td>
+						<td>2017.11.01 19:21:50</td>
+					</tr>
+				</table>
+			</section>
+		</section>
+		<section class="ft"></section>
+	</section>
+	<script type="text/javascript">
+		(function() {
+		var awards = [
+				{'index': 0, 'text': '特等奖' , 'name': 'icono-headphone'},
+				{'index': 1, 'text': '一等奖' , 'name': 'icono-iphone'},
+				{'index': 2, 'text': '二等奖' , 'name': 'icono-camera'},
+				{'index': 3, 'text': '三等奖' , 'name': 'icono-cup'},
+				{'index': 4, 'text': '参与奖', 'name': 'icono-calendar'},
+				{'index': 5, 'text': '谢谢<br/>参与', 'name': 'icono-calendar'},
+//				 {'index': 6, 'text': '安慰奖', 'name': 'icono-keyboard'}
+			],
+			len = awards.length,
+			turnNum = 1 / len;  // 文字旋转 turn 值
+	
+		var gbWheel = $('gbWheel'),
+			lineList = gbWheel.querySelector('ul.gb-wheel-line'),
+			itemList = gbWheel.querySelector('.gb-wheel-list'),
+			lineListHtml = [],
+			itemListHtml = [];
+	
+		var transform = preTransform();
+	
+		awards.forEach(function(v, i, a) {
+			// 分隔线
+			lineListHtml.push('<li class="gb-wheel-litem" style="' + transform + ': rotate('+ (i * turnNum + turnNum / 2) +'turn)"></li>');
+	
+			// 奖项
+			itemListHtml.push('<div class="gb-wheel-item">');
+			itemListHtml.push('<div class="gb-wheel-icontent" style="' + transform + ': rotate('+ (i * turnNum) +'turn)">');
+			itemListHtml.push('<p class="gb-wheel-iicon">');
+			itemListHtml.push('<i class="'+v.name+'"></i>');
+			itemListHtml.push('</p>');
+			itemListHtml.push('<p class="gb-wheel-itext">');
+			itemListHtml.push(v.text);
+			itemListHtml.push('</p>');
+			itemListHtml.push('</div>');
+			itemListHtml.push('</div>');
+		});           
+	
+		lineList.innerHTML = lineListHtml.join('');
+		itemList.innerHTML = itemListHtml.join('');
+	
+		function $(id) {
+			return document.getElementById(id);
+		};
+	
+		// 旋转
+		var i = 0;
+		var oldpart="";
+		$('gbLottery').onclick = function() {
+//			i++;
+//			gbWheel.querySelector('.gb-wheel-content').style = transform + ': rotate('+ i * 3600 +'deg)';
+			
+			//随机
+			i++;
+			var ran=parseInt(Math.random()*10);
+			ran>len-1?ran=len-1:ran;
+			console.log(ran)
+			gbWheel.querySelector('.gb-wheel-content').style = transform + ': rotate('+ (-(i * 3600+360/len*ran)) +'deg)'; 
+			console.log(awards[ran].text)
+		}
+	
+		// transform兼容
+		function preTransform() {
+			var cssPrefix,
+			vendors = {
+			  '': '',
+			  Webkit: 'webkit',
+			  Moz: '',
+			  O: 'o',
+			  ms: 'ms'
+			},
+			testEle = document.createElement('p'),
+			cssSupport = {};
+	
+			 // 嗅探特性
+			Object.keys(vendors).some(function(vendor) {
+				if (testEle.style[vendor + (vendor ? 'T' : 't') + 'ransform'] !== undefined) {
+				  cssPrefix = vendor ? '-' + vendor.toLowerCase() + '-' : '';
+				  return true;
+				}
+			});
+	
+		  function normalizeCss(name) {
+			name = name.toLowerCase();
+			return cssPrefix ? cssPrefix + name : name;
+		  }
+	
+		  cssSupport = {
+			transform: normalizeCss('Transform'),
+		  }
+	
+		  return cssSupport.transform;
+		}
+	}());
+	
+	
+	
+	
+	</script>
+</body>
+</html>
